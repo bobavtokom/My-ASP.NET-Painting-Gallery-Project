@@ -15,14 +15,17 @@ namespace BoArtPaint.Controllers
         private ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: Paintings
-        public ActionResult Index()
-        {
+        public ActionResult Index() {
             var paintings = _db.Paintings.Include(m => m.Artist);
-            return View(paintings.ToList());
-        }
 
-        // GET: Paintings/Details/5
-        public ActionResult Details(int? id)
+            if (User.IsInRole(RoleName.CanManagePaintings)) {
+                return View();
+            }
+                return View("Index - ForNonAuthorizedUsers", paintings.ToList());  
+    }
+
+    // GET: Paintings/Details/5
+    public ActionResult Details(int? id)
         {
             if (id == null)
             {

@@ -119,3 +119,10 @@ C:\Users\Boban\source\repos\BoArtPaintGallery\BoArtPaint\bin\System.Web.Http.xml
 C:\Users\Boban\source\repos\BoArtPaintGallery\BoArtPaint\bin\System.Web.Http.WebHost.xml
 C:\Users\Boban\source\repos\BoArtPaintGallery\BoArtPaint\bin\AutoMapper.dll
 C:\Users\Boban\source\repos\BoArtPaintGallery\BoArtPaint\bin\AutoMapper.xml
+C:\Users\Boban\source\repos\BoArtPaintGallery\BoArtPaint\bin\Glimpse.Ado.dll
+C:\Users\Boban\source\repos\BoArtPaintGallery\BoArtPaint\bin\Glimpse.AspNet.dll
+C:\Users\Boban\source\repos\BoArtPaintGallery\BoArtPaint\bin\Glimpse.Core.dll
+C:\Users\Boban\source\repos\BoArtPaintGallery\BoArtPaint\bin\Glimpse.EF6.dll
+C:\Users\Boban\source\repos\BoArtPaintGallery\BoArtPaint\bin\Glimpse.Mvc5.dll
+C:\Users\Boban\source\repos\BoArtPaintGallery\BoArtPaint\obj\Debug\BoArtPaint.Migrations.DeletedRentalTable.resources
+C:\Users\Boban\source\repos\BoArtPaintGallery\BoArtPaint\obj\Debug\BoArtPaint.Migrations.RentTableAdded.resources
