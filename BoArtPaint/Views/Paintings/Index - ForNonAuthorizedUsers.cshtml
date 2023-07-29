@@ -38,11 +38,10 @@
     @foreach (var item in Model) {
         <div class="col-md-4 col-sm-6 col-lg-3 gallery" id="paintings">
             <p class="modal-title">@item.Name</p>
-            <a href="@item.PaintUrl">
+            <a href="paintings/details/@item.Id">
                 <img src="@item.PaintUrl" class="img-thumbnail">
             </a>
             @Html.ActionLink("More", "Details", "Paintings", new { id = item.Id }, new { @class = "btn btn-primary" })
-            <button data-painting-id="@item.Id" class="btn-danger js-delete">Delete</button>
         </div>
     }
 
@@ -74,25 +73,4 @@
 
 
     </table>*@
-@section scripts{
-    <script>
-        $(document).ready(function () {
-            /*  $("#paintings").DataTable();*/
-            $("#paintings").on("click", ".js-delete", function () {
-                var button = $(this);
-                bootbox.confirm("Are you sure to delete this item?", function (result) {
-                    if (result) {
-                        $.ajax({
-                            url: "/api/paintings/" + button.attr("data-painting-id"),
-                            method: "DELETE",
-                            success: function () {
-                                button.parents("tr").remove();
 
-                            }
-                        });
-                    }
-                });
-            });
-        });
-    </script>
-}

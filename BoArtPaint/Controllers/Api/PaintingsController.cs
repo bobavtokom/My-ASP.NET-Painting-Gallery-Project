@@ -19,22 +19,22 @@ namespace BoArtPaint.Controllers.Api {
         }
         // GET /api/paintings
         public IEnumerable<PaintingDto> GetPaintings() {
-           return _context.Paintings.ToList().Select(Mapper.Map<Painting, PaintingDto>);
+            return _context.Paintings.ToList().Select(Mapper.Map<Painting, PaintingDto>);
         }
 
         // GET /api/paintings/1
-        public IHttpActionResult GetPainting (int id) {
+        public IHttpActionResult GetPainting(int id) {
             var painting = _context.Paintings.FirstOrDefault(x => x.Id == id);
-            if(painting == null) {
+            if (painting == null) {
                 return NotFound();
             }
-            return Ok(Mapper.Map<Painting,PaintingDto>(painting));
+            return Ok(Mapper.Map<Painting, PaintingDto>(painting));
         }
 
         // POST /api/paintings
         [HttpPost]
-        public IHttpActionResult CreatePainting (PaintingDto paintingDto) {
-            if(!ModelState.IsValid) {
+        public IHttpActionResult CreatePainting(PaintingDto paintingDto) {
+            if (!ModelState.IsValid) {
                 return BadRequest();
             }
             var painting = Mapper.Map<PaintingDto, Painting>(paintingDto);
@@ -46,12 +46,12 @@ namespace BoArtPaint.Controllers.Api {
 
         // PUT /api/paintings/1
         [HttpPost]
-        public void UpdatePainting (int id, PaintingDto paintingDto) {
+        public void UpdatePainting(int id, PaintingDto paintingDto) {
             if (!ModelState.IsValid) {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
             var paintingId = _context.Paintings.FirstOrDefault(p => p.Id == id);
-            if(paintingId == null) {
+            if (paintingId == null) {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
             Mapper.Map(paintingDto, paintingId);
