@@ -76,14 +76,31 @@ namespace BoArtPaint.Controllers {
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,PaintUrl,Price,ArtistName")] Painting painting) {
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,PaintUrl,Price,ArtistId")] Painting painting) {
             if (ModelState.IsValid) {
-                _db.Entry(painting).State = EntityState.Modified;
-                _db.SaveChanges();
-                return RedirectToAction("Index");
+                // Find the associated Artist entity based on the provided ArtistId
+                Artist artist = _db.Artists.FirstOrDefault(a => a.Id == painting.ArtistId);
+
+                // Check if the associated Artist was found
+                if (artist != null) {
+                    // Set the Artist property of the Painting to the associated Artist
+                    painting.Artist = artist;
+
+                    // Mark the Painting entity as modified and save changes
+                    _db.Entry(painting).State = EntityState.Modified;
+                    _db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                } else {
+                    // Handle the case where the associated Artist is not found
+                    // You may want to add appropriate error handling here
+                }
             }
             return View(painting);
         }
+
+
+
 
         // GET: Paintings/Delete/5
         public ActionResult Delete(int? id) {
