@@ -49,7 +49,7 @@ namespace BoArtPaint.Controllers {
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,PaintUrl,Price,Artist")] Painting painting) {
+        public ActionResult Create([Bind(Include = "id,Name,Description,PaintUrl,Price,Artist")] Painting painting) {
             if (ModelState.IsValid) {
                 _db.Paintings.Add(painting);
                 _db.SaveChanges();
@@ -60,6 +60,7 @@ namespace BoArtPaint.Controllers {
         }
 
         // GET: Paintings/Edit/5
+        [Authorize(Roles = RoleName.CanManagePaintings)]
         public ActionResult Edit(int? id) {
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -76,24 +77,26 @@ namespace BoArtPaint.Controllers {
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,PaintUrl,Price,ArtistId")] Painting painting) {
+        public ActionResult Edit(int id, Painting painting) {
             if (ModelState.IsValid) {
-                // Find the associated Artist entity based on the provided ArtistId
-                Artist artist = _db.Artists.FirstOrDefault(a => a.Id == painting.ArtistId);
+               
+                var currentPainting = _db.Paintings.Include(m => m.Artist).FirstOrDefault(P => P.Id == id);
 
                 // Check if the associated Artist was found
-                if (artist != null) {
-                    // Set the Artist property of the Painting to the associated Artist
-                    painting.Artist = artist;
+                if (currentPainting != null) {
 
-                    // Mark the Painting entity as modified and save changes
-                    _db.Entry(painting).State = EntityState.Modified;
+                    currentPainting.Name = painting.Name;
+                    currentPainting.Price = painting.Price;
+                    currentPainting.PaintUrl = painting.PaintUrl;
+                    currentPainting.Artist.ArtistName = painting.Artist.ArtistName;
+                    currentPainting.Description = painting.Description;
+
                     _db.SaveChanges();
 
                     return RedirectToAction("Index");
                 } else {
-                    // Handle the case where the associated Artist is not found
-                    // You may want to add appropriate error handling here
+
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
                 }
             }
             return View(painting);
