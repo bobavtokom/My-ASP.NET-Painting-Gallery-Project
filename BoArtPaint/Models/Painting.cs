@@ -16,6 +16,7 @@ namespace BoArtPaint.Models {
         public int ArtistId { get; set; }
 
         public Artist Artist { get; set; }
-       
+        public int LikeCount { get; set; }
+        public int DislikeCount { get; set; }
     }
 }

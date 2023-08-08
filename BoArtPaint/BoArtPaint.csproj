@@ -228,10 +228,19 @@
     <Compile Include="Migrations\202304241748046_RentTableAdded.designer.cs">
       <DependentUpon>202304241748046_RentTableAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202308082005519_LikeDislikeModelCreated.cs" />
+    <Compile Include="Migrations\202308082005519_LikeDislikeModelCreated.designer.cs">
+      <DependentUpon>202308082005519_LikeDislikeModelCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308082029576_LikeCountAndDislikeCountPropsAddedToPaintingEntity.cs" />
+    <Compile Include="Migrations\202308082029576_LikeCountAndDislikeCountPropsAddedToPaintingEntity.designer.cs">
+      <DependentUpon>202308082029576_LikeCountAndDislikeCountPropsAddedToPaintingEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LikeDislike.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ModelBuilder.cs" />
     <Compile Include="Models\Painting.cs" />
@@ -512,6 +521,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304241748046_RentTableAdded.resx">
       <DependentUpon>202304241748046_RentTableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308082005519_LikeDislikeModelCreated.resx">
+      <DependentUpon>202308082005519_LikeDislikeModelCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308082029576_LikeCountAndDislikeCountPropsAddedToPaintingEntity.resx">
+      <DependentUpon>202308082029576_LikeCountAndDislikeCountPropsAddedToPaintingEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

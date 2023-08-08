@@ -10,7 +10,7 @@ using BoArtPaint.Models;
 
 namespace BoArtPaint.Controllers {
     public class PaintingsController : Controller {
-        private ApplicationDbContext _db = new ApplicationDbContext();
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: Paintings
         public ActionResult Index() {
@@ -115,6 +115,22 @@ namespace BoArtPaint.Controllers {
                 return HttpNotFound();
             }
             return View(painting);
+        }
+
+        [HttpPost]
+        public JsonResult UpdateLikeDislike (int paintingId, bool isLiked) {
+            var painting = _db.Paintings.FirstOrDefault(p => p.Id == paintingId);
+
+            if(painting != null) {
+
+                if (isLiked) {
+                    painting.LikeCount++;
+                } else {
+                    painting.DislikeCount++;
+                }
+                _db.SaveChanges();
+            }
+            return Json(new {likeCount = painting.LikeCount, dislikeCount = painting.DislikeCount });
         }
 
         // POST: Paintings/Delete/5

@@ -7,33 +7,61 @@
 
 
 @*<div class="container">
-    <div class="details-row">
-        <div class="col-md-4 gallery">
-            <img src="@Model.PaintUrl" class="details-img gallery-img" alt="Responsive image" >
+        <div class="details-row">
+            <div class="col-md-4 gallery">
+                <img src="@Model.PaintUrl" class="details-img gallery-img" alt="Responsive image" >
+            </div>
+            <div class="col-md-8 gallery">
+                <h1>@Model.Name</h1>
+                <h2>Artist: @Model.Artist.ArtistName</h2>
+                <p>@Model.Description</p>
+                <p>@Model.Price</p>
+            </div>
         </div>
-        <div class="col-md-8 gallery">
-            <h1>@Model.Name</h1>
-            <h2>Artist: @Model.Artist.ArtistName</h2>
-            <p>@Model.Description</p>
-            <p>@Model.Price</p>
-        </div>
-    </div>
-</div>*@
+    </div>*@
 
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
             <img src="@Model.PaintUrl" alt="@Model.Name" class="details-img gallery-img" alt="Responsive image">
-            <button> Like </button>    <button> Dislike </button>
+            <div>
+                <button class="like-button" data-content-id="@Model.Id"> Like </button>
+                <button class="dislike-button" data-content-id="@Model.Id"> Dislike </button>
+            </div>
+            <div>
+                <span class="like-count">@Model.LikeCount</span> Likes
+                <span class="dislike-count">@Model.DislikeCount</span> Dislikes
+            </div>
         </div>
         <div class="col-md-6">
             <h1>@Model.Name</h1>
             <p class="lead">@Model.Description</p>
-            <h2 class = "lead"> Artist: @Model.Artist.ArtistName</h2>
+            <h2 class="lead"> Artist: @Model.Artist.ArtistName</h2>
             <p class="font-weight-bold">Price: $@Model.Price</p>
         </div>
     </div>
 </div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".like-button").click(function () {
+                var paintingId = $(this).data("content-id");
+                updateLikeDislike(paintingId, true);
+                console.log(paintingId);
+            });
+            $(".dislike-button").click(function () {
+                var paintingId = $(this).data("content-id");
+                updateLikeDislike(paintingId, false);
+            });
+            function updateLikeDislike(paintingId, isLiked) {
+                $.post("/Paintings/UpdateLikeDislike", { paintingId: paintingId, isLiked: isLiked }, function (data) {
+                    $(".like-count").text(data.likeCount);
+                    $(".dislike-count").text(data.dislikeCount);
+                });
+            }
+        })
+    </script>
+
+    }
 
 
- 

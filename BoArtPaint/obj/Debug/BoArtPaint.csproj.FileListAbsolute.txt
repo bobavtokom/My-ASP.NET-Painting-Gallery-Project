@@ -126,3 +126,5 @@ C:\Users\Boban\source\repos\BoArtPaintGallery\BoArtPaint\bin\Glimpse.EF6.dll
 C:\Users\Boban\source\repos\BoArtPaintGallery\BoArtPaint\bin\Glimpse.Mvc5.dll
 C:\Users\Boban\source\repos\BoArtPaintGallery\BoArtPaint\obj\Debug\BoArtPaint.Migrations.DeletedRentalTable.resources
 C:\Users\Boban\source\repos\BoArtPaintGallery\BoArtPaint\obj\Debug\BoArtPaint.Migrations.RentTableAdded.resources
+C:\Users\Boban\source\repos\BoArtPaintGallery\BoArtPaint\obj\Debug\BoArtPaint.Migrations.LikeDislikeModelCreated.resources
+C:\Users\Boban\source\repos\BoArtPaintGallery\BoArtPaint\obj\Debug\BoArtPaint.Migrations.LikeCountAndDislikeCountPropsAddedToPaintingEntity.resources

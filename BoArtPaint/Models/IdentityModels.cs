@@ -23,6 +23,7 @@ namespace BoArtPaint.Models
         public DbSet<Painting> Paintings { get; set; }
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Rent> Rents { get; set; }
+        public DbSet<LikeDislike> LikeDislikes { get; set; }
         public object DeleteBehavior { get; private set; }
 
        
