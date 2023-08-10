@@ -10,7 +10,11 @@ using BoArtPaint.Models;
 
 namespace BoArtPaint.Controllers {
     public class PaintingsController : Controller {
-        private readonly ApplicationDbContext _db = new ApplicationDbContext();
+        private readonly ApplicationDbContext _db;
+
+        public PaintingsController() {
+            _db = new ApplicationDbContext();
+        }
 
         // GET: Paintings
         public ActionResult Index() {
@@ -132,6 +136,42 @@ namespace BoArtPaint.Controllers {
             }
             return Json(new {likeCount = painting.LikeCount, dislikeCount = painting.DislikeCount });
         }
+            public ActionResult AddToCart(int productId, string productName, double price, int quantity) {
+                List<Painting> cart = Session["Cart"] as List<Painting> ?? new List<Painting>();
+
+                Painting existingItem = _db.Paintings.FirstOrDefault(p => p.Id == productId);
+                if (existingItem != null) {
+                    existingItem.Quantity += quantity;
+                } else {
+                    cart.Add(new Painting {
+                        Id = productId,
+                        Name = productName,
+                        Price = price,
+                        Quantity = quantity
+                    });
+                }
+
+                Session["Cart"] = cart;
+                return RedirectToAction("Index", "Painting"); 
+            }
+
+            public ActionResult ViewCart() {
+                List<Painting> cart = Session["Cart"] as List<Painting> ?? new List<Painting>();
+                return View(cart);
+            }
+
+            public ActionResult RemoveFromCart(int productId) {
+                List<Painting> cart = Session["Cart"] as List<Painting> ?? new List<Painting>();
+                Painting itemToRemove = _db.Paintings.FirstOrDefault(p => p.Id == productId);
+
+                if (itemToRemove != null) {
+                    cart.Remove(itemToRemove);
+                    Session["Cart"] = cart;
+                }
+
+                return RedirectToAction("ViewCart");
+            }
+
 
         // POST: Paintings/Delete/5
         [HttpPost, ActionName("Delete")]

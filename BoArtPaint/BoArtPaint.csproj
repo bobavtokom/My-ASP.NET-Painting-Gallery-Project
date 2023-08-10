@@ -236,6 +236,14 @@
     <Compile Include="Migrations\202308082029576_LikeCountAndDislikeCountPropsAddedToPaintingEntity.designer.cs">
       <DependentUpon>202308082029576_LikeCountAndDislikeCountPropsAddedToPaintingEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202308102002077_PaintingModelUpdated.cs" />
+    <Compile Include="Migrations\202308102002077_PaintingModelUpdated.designer.cs">
+      <DependentUpon>202308102002077_PaintingModelUpdated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308102048104_CartItemModelDeleted.cs" />
+    <Compile Include="Migrations\202308102048104_CartItemModelDeleted.designer.cs">
+      <DependentUpon>202308102048104_CartItemModelDeleted.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Artist.cs" />
@@ -498,6 +506,7 @@
     <Content Include="Views\Paintings\Index.cshtml" />
     <Content Include="Views\Paintings\Details - ForNonAuthorizedUsers.cshtml" />
     <Content Include="Views\Paintings\Index - ForNonAuthorizedUsers.cshtml" />
+    <Content Include="Views\Paintings\ViewCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -527,6 +536,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202308082029576_LikeCountAndDislikeCountPropsAddedToPaintingEntity.resx">
       <DependentUpon>202308082029576_LikeCountAndDislikeCountPropsAddedToPaintingEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308102002077_PaintingModelUpdated.resx">
+      <DependentUpon>202308102002077_PaintingModelUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308102048104_CartItemModelDeleted.resx">
+      <DependentUpon>202308102048104_CartItemModelDeleted.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

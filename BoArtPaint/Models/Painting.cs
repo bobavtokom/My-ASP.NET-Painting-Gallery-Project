@@ -13,6 +13,8 @@ namespace BoArtPaint.Models {
         [Url]
         public string PaintUrl { get; set; }
         public double Price { get; set; }
+        public int Quantity { get; set; }
+        public double Subtotal => Price * Quantity;
         public int ArtistId { get; set; }
 
         public Artist Artist { get; set; }

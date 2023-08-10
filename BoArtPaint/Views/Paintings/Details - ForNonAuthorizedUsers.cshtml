@@ -23,7 +23,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
-            <img src="@Model.PaintUrl" alt="@Model.Name" class="details-img gallery-img" alt="Responsive image">
+            <img src="@Model.PaintUrl" alt="@Model.Name" class="details-img gallery-img">
             <div>
                 <button class="like-button" data-content-id="@Model.Id"> Like </button>
                 <button class="dislike-button" data-content-id="@Model.Id"> Dislike </button>
@@ -38,6 +38,7 @@
             <p class="lead">@Model.Description</p>
             <h2 class="lead"> Artist: @Model.Artist.ArtistName</h2>
             <p class="font-weight-bold">Price: $@Model.Price</p>
+            <p><a href="#" id="addToCart">Add to Cart</a></p>
         </div>
     </div>
 </div>
@@ -60,7 +61,19 @@
                 });
             }
         })
+
+    $(function () {
+        $("#addToCart").click(function () {
+            $.post("@Url.Action("AddToCart", "Paintings")",
+                { productId: @Model.Id, productName: "@Model.Name", price: @Model.Price, quantity: 1 },
+                function () {
+                    alert("Added to cart!");
+                });
+        });
+    });
     </script>
+ 
+
 
     }
 
