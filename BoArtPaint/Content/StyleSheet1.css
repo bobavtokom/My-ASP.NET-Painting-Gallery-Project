@@ -1,0 +1,25 @@
+﻿
+    .gallery
+
+{
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.gallery img {
+    border-radius: 5px;
+
+
+}
+
+.gallery a:hover img {
+    opacity: 0.8;
+}
+.details-img{
+    max-width: 400px;
+}
+.details-row{
+    display: flex;
+    flex-direction: row;
+
+}

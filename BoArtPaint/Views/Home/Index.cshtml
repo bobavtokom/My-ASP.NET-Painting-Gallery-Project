@@ -1,0 +1,21 @@
+﻿@model BoArtPaint.ViewModels.ArtistViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+@using (Html.BeginForm("Index", "Home")) {
+<div class="form-group">
+  @Html.DropDownListFor(m => m.Painting.ArtistId, new SelectList(Model.Artists, "Id", "ArtistName"), "Select artist", new { @class = "form-control" })
+
+</div>}
+    
+<div class="jumbotron">
+    <div class="container">
+        <h1>Art Gallery</h1>
+
+        <p class="lead"></p>
+        <p><a href="https://www.facebook.com/pittoreto/photos" class="btn btn-primary btn-lg">My Paintings &raquo;</a></p>
+        <img src="~/Content/serg-bataev-pWEFjiRkjDU-unsplash.jpg" alt="Image" class="img-responsive col-lg-12 col-md-12 col-sm-12" />
+    </div>
+
+</div>
+

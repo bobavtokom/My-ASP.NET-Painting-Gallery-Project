@@ -1,0 +1,26 @@
+﻿@model BoArtPaint.Models.Painting
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div class="container">
+    <div class="details-row">
+        <div class="col-md-4 gallery">
+            <img src="@Model.PaintUrl" class="details-img gallery-img" alt="Responsive image" >
+        </div>
+        <div class="col-md-8 gallery">
+            <h1>@Model.Name</h1>
+            <h2>Artist: @Model.Artist.ArtistName</h2>
+            <p>@Model.Description</p>
+        </div>
+    </div>
+</div>
+@Html.ActionLink("Back", "Index", "Paintings", new { @class = "btn btn-primary" })
+@Html.ActionLink("Edit", "Edit", "Paintings", new { id = Model.Id }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Delete", "Delete", "Paintings", new { id = Model.Id }, new { @class = "btn btn-primary" })
+
+ 
